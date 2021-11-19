@@ -1,4 +1,4 @@
-﻿using coding.Coders.HuffmanCoder;
+﻿using coding.Coders.Huffman;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;

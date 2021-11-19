@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace coding.Coders.RLECoder
+namespace coding.Coders.RLE
 {
     public class RLEEncoder : Encoder
     {

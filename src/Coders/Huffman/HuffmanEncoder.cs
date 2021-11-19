@@ -1,4 +1,4 @@
-﻿using coding.Coders.DictionaryCoder;
+﻿using coding.Coders.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using coding.DictionaryExtension;
 
-namespace coding.Coders.HuffmanCoder
+namespace coding.Coders.Huffman
 {
 
     public class HuffmanEncoder : DictionaryEncoder

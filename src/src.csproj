@@ -44,21 +44,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calc.cs" />
-    <Compile Include="Coders\ArithmeticCoder\ArithmeticDecoder.cs" />
-    <Compile Include="Coders\ArithmeticCoder\ArithmeticEncoder.cs" />
+    <Compile Include="Coders\Arithmetic\ArithmeticDecoder.cs" />
+    <Compile Include="Coders\Arithmetic\ArithmeticEncoder.cs" />
     <Compile Include="Coders\Coder.cs" />
     <Compile Include="Coders\Decoder.cs" />
-    <Compile Include="Coders\DictionaryCoder\DictionaryDecoder.cs" />
+    <Compile Include="Coders\Dictionary\DictionaryDecoder.cs" />
     <Compile Include="Coders\Encoder.cs" />
-    <Compile Include="Coders\HuffmanCoder\HuffmanDecoder.cs" />
-    <Compile Include="Coders\HuffmanCoder\HuffmanEncoder.cs" />
+    <Compile Include="Coders\Hamming\HammingCoder.cs" />
+    <Compile Include="Coders\Hamming\HammingDecoder.cs" />
+    <Compile Include="Coders\Hamming\HammingEncoder.cs" />
+    <Compile Include="Coders\Huffman\HuffmanDecoder.cs" />
+    <Compile Include="Coders\Huffman\HuffmanEncoder.cs" />
     <Compile Include="Coders\IDecodable.cs" />
-    <Compile Include="Coders\DictionaryCoder\DictionaryEncoder.cs" />
+    <Compile Include="Coders\Dictionary\DictionaryEncoder.cs" />
     <Compile Include="Coders\IEncodable.cs" />
-    <Compile Include="Coders\RLECoder\RLEDecoder.cs" />
-    <Compile Include="Coders\RLECoder\RLEEncoder.cs" />
-    <Compile Include="Coders\ShannonFanoCoder\ShannonFanoDecoder.cs" />
-    <Compile Include="Coders\ShannonFanoCoder\ShannonFanoEncoder.cs" />
+    <Compile Include="Coders\RLE\RLEDecoder.cs" />
+    <Compile Include="Coders\RLE\RLEEncoder.cs" />
+    <Compile Include="Coders\ShannonFano\ShannonFanoDecoder.cs" />
+    <Compile Include="Coders\ShannonFano\ShannonFanoEncoder.cs" />
     <Compile Include="CommandHandler\Command.cs" />
     <Compile Include="CommandHandler\Commander.cs" />
     <Compile Include="DictionaryExtension\DictionaryShell.cs" />

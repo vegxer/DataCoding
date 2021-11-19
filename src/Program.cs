@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using coding.Coders;
-using coding.Coders.ShannonFanoCoder;
-using coding.Coders.DictionaryCoder;
-using coding.Coders.RLECoder;
+using coding.Coders.ShannonFano;
+using coding.Coders.Dictionary;
+using coding.Coders.RLE;
 using coding.CommandHadler;
-using coding.Coders.HuffmanCoder;
-using coding.Coders.ArithmeticCoder;
+using coding.Coders.Huffman;
+using coding.Coders.Arithmetic;
+using coding.Coders.Hamming;
 
 namespace coding
 {
@@ -92,6 +93,21 @@ namespace coding
             Console.WriteLine("Сообщение декодировано");
         }
 
+        static void EncodeHamming(string inputFilePath, string outputFilePath)
+        {
+            HammingEncoder hammingEncoder = new HammingEncoder(inputFilePath, outputFilePath);
+            hammingEncoder.Encode();
+            Console.WriteLine("Сообщение закодировано\nЦена кодирования: {0 :F2}", hammingEncoder.GetEncodingPrice());
+            Console.WriteLine("Степень сжатия: {0 :F2} %\n", hammingEncoder.GetCompressionCoeff());
+        }
+
+        static void DecodeHamming(string inputFilePath, string outputFilePath)
+        {
+            HammingDecoder hammingEncoder = new HammingDecoder(inputFilePath, outputFilePath);
+            hammingEncoder.Decode();
+            Console.WriteLine("Сообщение декодировано");
+        }
+
 
         static void Main(string[] args)
         {
@@ -152,6 +168,18 @@ namespace coding
                 new List<string>() { "<путь к файлу с текстом, который нужно декодировать>",
                     "<путь к файлу, в который записать декодированный текст>" },
                 commandArgs => DecodeArithmetic(commandArgs[0], commandArgs[1])));
+
+            commander.AddCommand(new Command("/encode_hamming",
+                "закодировать сообщение методом Хемминга",
+                new List<string>() { "<путь к файлу с текстом, который нужно закодировать>",
+                    "<путь к файлу, в который записать закодированный текст>" },
+                commandArgs => EncodeHamming(commandArgs[0], commandArgs[1])));
+
+            commander.AddCommand(new Command("/decode_hamming",
+                "декодировать сообщение методом Хемминга",
+                new List<string>() { "<путь к файлу с текстом, который нужно декодировать>",
+                    "<путь к файлу, в который записать декодированный текст>" },
+                commandArgs => DecodeHamming(commandArgs[0], commandArgs[1])));
 
 
             Console.WriteLine("Введите /help для вывода списка команд");

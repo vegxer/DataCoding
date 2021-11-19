@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using coding.DictionaryExtension;
 
-namespace coding.Coders.DictionaryCoder
+namespace coding.Coders.Dictionary
 {
     public abstract class DictionaryEncoder : Encoder
     {
@@ -114,25 +114,6 @@ namespace coding.Coders.DictionaryCoder
                 new char[] { codesTable.ElementAt(codesTable.Count - 1).Key })[0]);
 
             return encodedDictionary;
-        }
-
-        protected List<byte> WriteAllBytes(string bytes)
-        {
-            List<byte> res = new List<byte>();
-            for (int i = 0; i < bytes.Length; i += 8)
-                res.Add(WriteByte(bytes.Substring(i, Math.Min(8, bytes.Length - i)), 0, 0));
-            return res;
-        }
-
-        private byte WriteByte(string strByte, byte codingByte, byte position)
-        {
-            int start = position;
-            int size = start + strByte.Length;
-            for (; position < size; ++position)
-                codingByte |= (byte)(int.Parse(strByte[position - start].ToString())
-                    << (8 - position - 1));
-
-            return codingByte;
         }
 
         protected Dictionary<char, double> GetSymbolPossibilities(string text)

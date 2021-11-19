@@ -3,7 +3,7 @@ using System;
 using coding.Coders;
 using System.IO;
 using System.Text;
-using coding.Coders.ShannonFanoCoder;
+using coding.Coders.ShannonFano;
 
 namespace ShannonFanoCoderTest
 {

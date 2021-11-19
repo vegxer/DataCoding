@@ -16,6 +16,25 @@ namespace coding.Coders
             return (1 - (double)File.ReadAllBytes(outputFilePath).Length / File.ReadAllBytes(inputFilePath).Length) * 100;
         }
 
+        protected List<byte> WriteAllBytes(string bytes)
+        {
+            List<byte> res = new List<byte>();
+            for (int i = 0; i < bytes.Length; i += 8)
+                res.Add(WriteByte(bytes.Substring(i, Math.Min(8, bytes.Length - i)), 0, 0));
+            return res;
+        }
+
+        protected byte WriteByte(string strByte, byte codingByte, byte position)
+        {
+            int start = position;
+            int size = start + strByte.Length;
+            for (; position < size; ++position)
+                codingByte |= (byte)(int.Parse(strByte[position - start].ToString())
+                    << (8 - position - 1));
+
+            return codingByte;
+        }
+
         public override void WriteFile(List<byte> encodedText)
         {
             File.WriteAllBytes(outputFilePath, encodedText.ToArray());

@@ -1,4 +1,4 @@
-﻿using coding.Coders.ArithmeticCoder;
+﻿using coding.Coders.Arithmetic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;

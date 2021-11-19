@@ -1,4 +1,4 @@
-﻿using coding.Coders.DictionaryCoder;
+﻿using coding.Coders.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace coding.Coders.ShannonFanoCoder
+namespace coding.Coders.ShannonFano
 {
     public class ShannonFanoEncoder : DictionaryEncoder
     {

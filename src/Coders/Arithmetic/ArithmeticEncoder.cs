@@ -1,13 +1,13 @@
 ﻿using coding;
 using coding.Coders;
-using coding.Coders.DictionaryCoder;
+using coding.Coders.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace coding.Coders.ArithmeticCoder
+namespace coding.Coders.Arithmetic
 {
     public class ArithmeticEncoder : DictionaryEncoder
     {
