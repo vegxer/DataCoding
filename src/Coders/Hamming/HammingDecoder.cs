@@ -43,12 +43,14 @@ namespace coding.Coders.Hamming
 
             string res = "";
 
+            string num;
             for (int i = 0; i < text.Count - 1; ++i)
             {
-                string num = Calc.ConvertToBase(text[i].ToString(), 10, 2, 1e-16);
+                num = Calc.ConvertToBase(text[i].ToString(), 10, 2, 1e-16);
                 res += new string('0', 8 - num.Length) + num;
             }
-            res += Calc.ConvertToBase((text[text.Count - 1] >> (8 - lastByteUsed)).ToString(), 10, 2, 1e-16);
+            num = Calc.ConvertToBase((text[text.Count - 1] >> (8 - lastByteUsed)).ToString(), 10, 2, 1e-16);
+            res += new string('0', lastByteUsed - num.Length) + num;
 
             return res;
         }
