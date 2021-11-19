@@ -14,13 +14,13 @@ namespace coding.Coders.Hamming
         public override void Encode()
         {
             byte[] input = ReadFile();
-            int controlBitsCount = GetControlBitsCount(input.Length);
+            int controlBitsCount = GetControlBitsCount(input.Length * 8);
             string output = CreateOutputPattern(input, controlBitsCount);
             string controlBits = HammingCoder.GetControlBits(controlBitsCount, output);
             output = InsertControlBits(output, controlBits);
 
             List<byte> toFile = WriteAllBytes(output);
-            toFile.Insert(0, (byte)((((toFile.Count % 8) + 7) % 8) + 1));
+            toFile.Insert(0, (byte)((((output.Length % 8) + 7) % 8) + 1));
             WriteFile(toFile);
         }
 
@@ -28,7 +28,7 @@ namespace coding.Coders.Hamming
         {
             int controlBytes = 1;
 
-            while (messageLength + controlBytes + 1 > (1 << (controlBytes - 1)))
+            while (messageLength + controlBytes + 1 > (1 << controlBytes))
                 ++controlBytes;
 
             return controlBytes;
@@ -59,7 +59,13 @@ namespace coding.Coders.Hamming
 
         public override double GetEncodingPrice()
         {
-            throw new NotImplementedException();
+            byte[] input = ReadFile();
+            int controlBitsCount = GetControlBitsCount(input.Length);
+            string output = CreateOutputPattern(input, controlBitsCount);
+            string controlBits = HammingCoder.GetControlBits(controlBitsCount, output);
+            output = InsertControlBits(output, controlBits);
+
+            return (double)output.Length / input.Length;
         }
     }
 }
