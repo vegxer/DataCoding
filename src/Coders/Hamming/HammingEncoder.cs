@@ -39,7 +39,11 @@ namespace coding.Coders.Hamming
             string pattern = "";
 
             foreach (byte b in input)
-                pattern += Calc.ConvertToBase(b.ToString(), 10, 2, 1e-16);
+            {
+                string num = Calc.ConvertToBase(b.ToString(), 10, 2, 1e-16);
+                pattern += new string('0', 8 - num.Length) + num;
+            }
+            pattern.TrimStart('0');
 
             for (int i = 0; i < controlBitsCount; ++i)
                 pattern = pattern.Insert((1 << i) - 1, "0");
