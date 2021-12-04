@@ -12,6 +12,15 @@ namespace HammingCoderTest
         [TestClass]
         public class RLECoderTest
         {
+            private void changeRandomBit(string fileName)
+            {
+                byte[] text = File.ReadAllBytes(@fileName);
+                Random rand = new Random();
+                text[rand.Next(0, text.Length)] ^= (byte)(1 << rand.Next(0, 8));
+
+                File.WriteAllBytes(@fileName, text);
+            }
+
             [TestMethod]
             public void TestMethodLab8Task1()
             {
@@ -20,6 +29,8 @@ namespace HammingCoderTest
 
                 HammingEncoder rleEncoder = new HammingEncoder("text.txt", "encoded.txt");
                 rleEncoder.Encode();
+
+                changeRandomBit("encoded.txt");
 
                 HammingDecoder rleDecoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 rleDecoder.Decode();
@@ -37,6 +48,8 @@ namespace HammingCoderTest
                 HammingEncoder rleEncoder = new HammingEncoder("text.txt", "encoded.txt");
                 rleEncoder.Encode();
 
+                changeRandomBit("encoded.txt");
+
                 HammingDecoder rleDecoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 rleDecoder.Decode();
                 string decoded = File.ReadAllText("decoded.txt", Encoding.GetEncoding(1251));
@@ -53,6 +66,8 @@ namespace HammingCoderTest
                 HammingEncoder rleEncoder = new HammingEncoder("text.txt", "encoded.txt");
                 rleEncoder.Encode();
 
+                changeRandomBit("encoded.txt");
+
                 HammingDecoder rleDecoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 rleDecoder.Decode();
                 string decoded = File.ReadAllText("decoded.txt", Encoding.GetEncoding(1251));
@@ -68,6 +83,8 @@ namespace HammingCoderTest
 
                 HammingEncoder rleEncoder = new HammingEncoder("text.txt", "encoded.txt");
                 rleEncoder.Encode();
+
+                changeRandomBit("encoded.txt");
 
                 HammingDecoder rleDecoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 rleDecoder.Decode();
@@ -92,6 +109,8 @@ namespace HammingCoderTest
                 HammingEncoder rleEncoder = new HammingEncoder("text.txt", "encoded.txt");
                 rleEncoder.Encode();
 
+                changeRandomBit("encoded.txt");
+
                 HammingDecoder rleDecoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 rleDecoder.Decode();
                 string decoded = File.ReadAllText("decoded.txt", Encoding.GetEncoding(1251));
@@ -111,6 +130,8 @@ namespace HammingCoderTest
                 HammingEncoder rleEncoder = new HammingEncoder("text.txt", "encoded.txt");
                 rleEncoder.Encode();
 
+                changeRandomBit("encoded.txt");
+
                 HammingDecoder rleDecoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 rleDecoder.Decode();
                 string decoded = File.ReadAllText("decoded.txt", Encoding.GetEncoding(1251));
@@ -129,6 +150,8 @@ namespace HammingCoderTest
                 HammingEncoder rleEncoder = new HammingEncoder("text.txt", "encoded.txt");
                 rleEncoder.Encode();
 
+                changeRandomBit("encoded.txt");
+
                 HammingDecoder rleDecoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 rleDecoder.Decode();
                 string decoded = File.ReadAllText("decoded.txt", Encoding.GetEncoding(1251));
@@ -146,6 +169,8 @@ namespace HammingCoderTest
                 HammingEncoder rleEncoder = new HammingEncoder("text.txt", "encoded.txt");
                 rleEncoder.Encode();
 
+                changeRandomBit("encoded.txt");
+
                 HammingDecoder rleDecoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 rleDecoder.Decode();
                 string decoded = File.ReadAllText("decoded.txt", Encoding.GetEncoding(1251));
@@ -160,6 +185,9 @@ namespace HammingCoderTest
                 File.WriteAllText("text.txt", text, Encoding.GetEncoding(1251));
                 HammingEncoder encoder = new HammingEncoder("text.txt", "encoded.txt");
                 encoder.Encode();
+
+                changeRandomBit("encoded.txt");
+
                 HammingDecoder decoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 decoder.Decode();
                 Assert.AreEqual(text, File.ReadAllText("decoded.txt", Encoding.GetEncoding(1251)));
@@ -172,6 +200,9 @@ namespace HammingCoderTest
                 File.WriteAllText("text.txt", text, Encoding.GetEncoding(1251));
                 HammingEncoder encoder = new HammingEncoder("text.txt", "encoded.txt");
                 encoder.Encode();
+
+                changeRandomBit("encoded.txt");
+
                 HammingDecoder decoder = new HammingDecoder("encoded.txt", "decoded.txt");
                 decoder.Decode();
                 Assert.AreEqual(text, File.ReadAllText("decoded.txt", Encoding.GetEncoding(1251)));
